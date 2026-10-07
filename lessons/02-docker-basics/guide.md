@@ -83,12 +83,14 @@ Dockerfile  →  docker build  →  image  →  docker run  →  container
 
 ### שלב 0 — לקבל את הקוד
 
-הקוד של האפליקציה נמצא בריפו של הקורס. המורה תיתן לכן את הכתובת.
+אם עשיתן fork ו-clone בשיעור 1, הריפו כבר במחשב. רק להיכנס לתיקייה ולעדכן:
 
 ```shell
-git clone <הכתובת שהמורה נותנת>
 cd devops-2027-shoplist
+git pull
 ```
+
+אם עוד לא: לעשות fork ואז clone לפי ההוראות ב-[README הראשי](../../README.md#לקבל-את-הקוד-fork-ואז-clone).
 
 מה יש בריפו:
 ```
