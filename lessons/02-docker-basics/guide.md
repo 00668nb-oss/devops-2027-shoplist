@@ -298,6 +298,7 @@ docker rm -f backend
 
 ```shell
 docker run -d -p 3000:3000 --name stats shoplist-stats:local
+docker logs stats
 curl.exe -i http://localhost:3000/health
 curl.exe -i http://localhost:3000/stats
 docker rm -f stats
@@ -307,6 +308,10 @@ docker rm -f stats
 |---|---|---|
 | `/health` | `200 OK` | הסרוויס עצמו תקין |
 | `/stats` | `502 Bad Gateway` | stats מבקש נתונים מה-backend, וה-backend לא רץ |
+
+> **קודם הלוג, אחר כך הבדיקה.** אם `docker logs` עוד לא מראה `stats service listening on 0.0.0.0:3000`, השרת עוד לא עלה, ו-`curl` יחזיר `Connection reset` או `connection refused`. מחכות שנייה ומריצות שוב את `docker logs`.
+
+> **שימו לב:** אחרי `docker rm`, גם הלוגים נמחקים. `docker logs stats` יחזיר `No such container`. מי שצריכה את הלוג, קוראת אותו לפני שמוחקת.
 
 שני הסרוויסים רצים, ושניהם נכשלים בדיוק באותה נקודה: הם צריכים מישהו אחר. כדי ש-`/stats` יעבוד צריך backend, וכדי ש-`/products` יעבוד צריך מסד נתונים ומשתני סביבה. להריץ כמה containers שמדברים זה עם זה זה בדיוק התפקיד של **Docker Compose**, בשיעור 3.
 
