@@ -1,0 +1,9 @@
+# app-config.yml - settings that are not secrets, shared by backend and stats
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: shoplist
+data:
+  DB_HOST: postgres
+  BACKEND_URL: http://backend:5000
